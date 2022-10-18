@@ -12,7 +12,7 @@ This project works with your to-do list. The actions you can do are: adding, dai
     "description"   :"message"
 }
 ```
-![new_todo.png](https://github.com/talhacgdem/todolist/master/images/new_todo.png) <br/>  <br/>
+![new_todo.png](https://github.com/talhacgdem/todolist/blob/master/images/new_todo.png) <br/>  <br/>
 
 
 ## [GET] todo/getDaily
@@ -41,16 +41,16 @@ This project works with your to-do list. The actions you can do are: adding, dai
         ...
 ]
 ```
-![weekly.png](https://github.com/talhacgdem/todolist/master/images/weekly.png) <br/>  <br/>
+![weekly.png](https://github.com/talhacgdem/todolist/blob/master/images/weekly.png) <br/>  <br/>
 
 ## [GET] todo/accept/{id}
 ### Accept todo item from given id
 ### If id is null!
-![accept_without_id.png](https://github.com/talhacgdem/todolist/master/images/accept_without_id.png) <br/>  <br/> 
+![accept_without_id.png](https://github.com/talhacgdem/todolist/blob/master/images/accept_without_id.png) <br/>  <br/> 
 
 ## [GET] todo/reject/{id}
 ### Reject todo item from given id
-![reject.png](https://github.com/talhacgdem/todolist/master/images/reject.png) <br/>  <br/> 
+![reject.png](https://github.com/talhacgdem/todolist/blob/master/images/reject.png) <br/>  <br/> 
 
 ## [GET] todo/delete/{id}
 ### Delete todo item from given id
