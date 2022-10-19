@@ -3,7 +3,10 @@
 
 This project works with your to-do list. The actions you can do are: adding, daily listing, weekly listing, confirming, rejecting, deleting.
 
-## [POST] todo/new
+## Swagger-UI API Documentation
+### Documentation is available on path : /swagger-ui.html
+
+## _[PUT]_ todo/new
 ### Add new todo item
 ### RequestBody
 ```javascript
@@ -43,14 +46,14 @@ This project works with your to-do list. The actions you can do are: adding, dai
 ```
 ![weekly.png](https://github.com/talhacgdem/todolist/blob/master/images/weekly.png) <br/>  <br/>
 
-## [GET] todo/accept/{id}
+## [PATCH] todo/accept/{id}
 ### Accept todo item from given id
 ### If id is null!
 ![accept_without_id.png](https://github.com/talhacgdem/todolist/blob/master/images/accept_without_id.png) <br/>  <br/> 
 
-## [GET] todo/reject/{id}
+## [PATCH] todo/reject/{id}
 ### Reject todo item from given id
 ![reject.png](https://github.com/talhacgdem/todolist/blob/master/images/reject.png) <br/>  <br/> 
 
-## [GET] todo/delete/{id}
+## [DELETE] todo/delete/{id}
 ### Delete todo item from given id
