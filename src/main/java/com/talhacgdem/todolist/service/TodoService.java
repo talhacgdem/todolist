@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 public class TodoService {
     private final TodoRepository todoRepository;
     private final TodoCreateRequestDtoConverter todoCreateRequestDtoConverter;
-
     private final TodoResponseDtoConverter todoResponseDtoConverter;
 
     public TodoService(TodoRepository todoRepository, TodoCreateRequestDtoConverter todoCreateRequestDtoConverter, TodoResponseDtoConverter todoResponseDtoConverter) {
