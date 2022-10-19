@@ -2,8 +2,6 @@ package com.talhacgdem.todolist.dto;
 
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
