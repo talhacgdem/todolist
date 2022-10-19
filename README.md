@@ -18,7 +18,7 @@ This project works with your to-do list. The actions you can do are: adding, dai
 ![new_todo.png](https://github.com/talhacgdem/todolist/blob/master/images/new_todo.png) <br/>  <br/>
 
 
-## [GET] todo/getDaily
+## _[GET]_ todo/getDaily
 ### List todos for today
 ```javascript
 [
@@ -31,7 +31,7 @@ This project works with your to-do list. The actions you can do are: adding, dai
 ]
 ```
 
-## [GET] todo/getWeekly
+## _[GET]_ todo/getWeekly
 ### List todos for this week
 ```javascript
 [
@@ -46,14 +46,14 @@ This project works with your to-do list. The actions you can do are: adding, dai
 ```
 ![weekly.png](https://github.com/talhacgdem/todolist/blob/master/images/weekly.png) <br/>  <br/>
 
-## [PATCH] todo/accept/{id}
+## _[PATCH]_ todo/accept/{id}
 ### Accept todo item from given id
 ### If id is null!
 ![accept_without_id.png](https://github.com/talhacgdem/todolist/blob/master/images/accept_without_id.png) <br/>  <br/> 
 
-## [PATCH] todo/reject/{id}
+## _[PATCH]_ todo/reject/{id}
 ### Reject todo item from given id
 ![reject.png](https://github.com/talhacgdem/todolist/blob/master/images/reject.png) <br/>  <br/> 
 
-## [DELETE] todo/delete/{id}
+## _[DELETE]_ todo/delete/{id}
 ### Delete todo item from given id
