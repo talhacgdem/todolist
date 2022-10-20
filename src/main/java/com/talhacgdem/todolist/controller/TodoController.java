@@ -2,7 +2,6 @@ package com.talhacgdem.todolist.controller;
 
 import com.talhacgdem.todolist.dto.TodoCreateRequestDto;
 import com.talhacgdem.todolist.dto.TodoResponseDto;
-import com.talhacgdem.todolist.entity.Todo;
 import com.talhacgdem.todolist.service.TodoService;
 
 import io.swagger.annotations.Api;
@@ -46,17 +45,17 @@ public class TodoController {
 
     @PatchMapping("accept/{id}")
     @ApiOperation(value = "Mark an event as completed from the to-do list")
-    public ResponseEntity<Todo> acceptTodo(@PathVariable(value = "id", required = false) Long id) {
+    public ResponseEntity<TodoResponseDto> acceptTodo(@PathVariable(value = "id", required = false) Long id) {
         if (id == null)
-            return new ResponseEntity<>(new Todo(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new TodoResponseDto(), HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(todoService.accept(id), HttpStatus.CREATED);
     }
 
     @PatchMapping( "reject/{id}")
     @ApiOperation(value = "Mark an event as uncompleted from the to-do list")
-    public ResponseEntity<Todo> rejectTodo(@PathVariable(value = "id", required = false) Long id) {
+    public ResponseEntity<TodoResponseDto> rejectTodo(@PathVariable(value = "id", required = false) Long id) {
         if (id == null)
-            return new ResponseEntity<>(new Todo(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new TodoResponseDto(), HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(todoService.reject(id), HttpStatus.CREATED);
     }
 

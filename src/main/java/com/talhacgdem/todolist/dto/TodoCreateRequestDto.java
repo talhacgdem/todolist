@@ -6,8 +6,6 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class TodoCreateRequestDto {
 
     private LocalDate date;
