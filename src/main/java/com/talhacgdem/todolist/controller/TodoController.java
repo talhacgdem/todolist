@@ -40,30 +40,24 @@ public class TodoController {
     @PutMapping("new")
     @ApiOperation(value = "Adding a new event to the to-do list")
     public ResponseEntity<TodoResponseDto> newTodo(@RequestBody TodoCreateRequestDto todo) {
-        return new ResponseEntity<>(todoService.newTodo(todo), HttpStatus.CREATED);// .created(todoService.newTodo(todo));
+        return new ResponseEntity<>(todoService.newTodo(todo), HttpStatus.CREATED);
     }
 
     @PatchMapping("accept/{id}")
     @ApiOperation(value = "Mark an event as completed from the to-do list")
-    public ResponseEntity<TodoResponseDto> acceptTodo(@PathVariable(value = "id", required = false) Long id) {
-        if (id == null)
-            return new ResponseEntity<>(new TodoResponseDto(), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<TodoResponseDto> acceptTodo(@PathVariable(value = "id") Long id) {
         return new ResponseEntity<>(todoService.accept(id), HttpStatus.CREATED);
     }
 
     @PatchMapping( "reject/{id}")
     @ApiOperation(value = "Mark an event as uncompleted from the to-do list")
-    public ResponseEntity<TodoResponseDto> rejectTodo(@PathVariable(value = "id", required = false) Long id) {
-        if (id == null)
-            return new ResponseEntity<>(new TodoResponseDto(), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<TodoResponseDto> rejectTodo(@PathVariable(value = "id") Long id) {
         return new ResponseEntity<>(todoService.reject(id), HttpStatus.CREATED);
     }
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "Deleting an event from the to-do list")
-    public ResponseEntity<?> deleteTodo(@PathVariable(value = "id", required = false) Long id) {
-        if (id == null)
-            return new ResponseEntity<>("Todo id must not be null", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> deleteTodo(@PathVariable(value = "id") Long id) {
         todoService.delete(id);
         return ResponseEntity.ok("Todo deleted from id : " + id);
     }
