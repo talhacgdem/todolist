@@ -2,46 +2,45 @@ package com.talhacgdem.todolist.service;
 
 import com.talhacgdem.todolist.dto.TodoCreateRequestDto;
 import com.talhacgdem.todolist.dto.TodoResponseDto;
-import com.talhacgdem.todolist.dto.converter.TodoConverter;
 import com.talhacgdem.todolist.entity.Todo;
 import com.talhacgdem.todolist.exception.TodoNotFoundException;
 import com.talhacgdem.todolist.repository.TodoRepository;
 
-import com.talhacgdem.todolist.utils.Util.DateUtil;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.talhacgdem.todolist.util.DateUtil;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class TodoService {
     private final TodoRepository todoRepository;
-    private final TodoConverter todoConverter;
 
-    public TodoService(TodoRepository todoRepository, TodoConverter todoConverter) {
-        this.todoRepository = todoRepository;
-        this.todoConverter = todoConverter;
-    }
-
+    private final ModelMapper modelMapper;
 
     public TodoResponseDto newTodo(TodoCreateRequestDto todo) {
-        Todo t = todoRepository.save(todoConverter.convertTodoFromTodoCreateRequestDto(todo));
-        return todoConverter.convertToTodoResponseFromTodo(t);
+        Todo t = todoRepository.save(
+                modelMapper.map(todo, Todo.class)
+        );
+        return modelMapper.map(t, TodoResponseDto.class);
     }
 
     public List<TodoResponseDto> getDaily() {
         return todoRepository.findByDate(LocalDate.now()).stream()
-                .map(todoConverter::convertToTodoResponseFromTodo)
+                .map(todo -> modelMapper.map(todo, TodoResponseDto.class))
                 .collect(Collectors.toList());
     }
 
     public List<TodoResponseDto> getWeekly() {
         return todoRepository.findByDateIsBetweenOrderByDate(
-                    DateUtil.getFirstDayOfWeekFromThisWeek(),
-                    DateUtil.getLastDayOfWeekFromThisWeek()
+                        DateUtil.getFirstDayOfWeekFromThisWeek(),
+                        DateUtil.getLastDayOfWeekFromThisWeek()
                 ).stream()
-                .map(todoConverter::convertToTodoResponseFromTodo)
+                .map(todo -> modelMapper.map(todo, TodoResponseDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -50,7 +49,7 @@ public class TodoService {
                 () -> new TodoNotFoundException(id)
         );
         t.setStatus(true);
-        return todoConverter.convertToTodoResponseFromTodo(todoRepository.save(t));
+        return modelMapper.map(todoRepository.save(t), TodoResponseDto.class);
     }
 
     public TodoResponseDto reject(Long id) {
@@ -58,7 +57,7 @@ public class TodoService {
                 () -> new TodoNotFoundException(id)
         );
         t.setStatus(false);
-        return todoConverter.convertToTodoResponseFromTodo(todoRepository.save(t));
+        return modelMapper.map(todoRepository.save(t), TodoResponseDto.class);
     }
 
     public void delete(Long id) {

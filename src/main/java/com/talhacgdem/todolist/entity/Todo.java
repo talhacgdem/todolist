@@ -10,15 +10,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@ToString
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
     private String description;
-    @Column(columnDefinition = "boolean default false")
-    private Boolean status;
+    private Boolean status = false;
 }
